@@ -13,6 +13,7 @@ const i18nextConfig = {
       : '/locales',
 
   reloadOnPrerender: process.env.NODE_ENV === 'development',
+  react: { useSuspense: false },
 }
 
 module.exports = i18nextConfig

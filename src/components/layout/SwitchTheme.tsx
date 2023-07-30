@@ -24,7 +24,7 @@ const SwitchTheme: React.FC = () => {
 
   return (
     <>
-      <label className="swap-rotate swap">
+      <label className="swap swap-rotate">
         <input
           type="checkbox"
           checked={isMoon}
