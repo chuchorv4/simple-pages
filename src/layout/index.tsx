@@ -13,16 +13,14 @@ const Layout = ({ children, domain }: LayoutProps) => {
 
   return (
     <>
-      <main className="container relative mx-auto flex h-screen max-h-screen flex-col">
+      <main className="container mx-auto flex min-h-screen flex-col">
         <Header
           title={t('pageTitle')}
           description={t('pageSubtitle')}
           favicon=""
           domain={domain}
         />
-        <section className="mx-a flex max-h-full grow flex-col overflow-y-auto overflow-x-hidden">
-          {children}
-        </section>
+        <section className="mx-a flex-grow">{children}</section>
         <Footer domain={domain} />
       </main>
       {isLoading && (

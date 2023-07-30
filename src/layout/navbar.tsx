@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ domain }) => {
 
   return (
     <>
-      <div className="navbar flex-none bg-base-100">
+      <div className="navbar sticky top-0 z-50 bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
