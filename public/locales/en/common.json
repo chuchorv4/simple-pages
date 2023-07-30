@@ -1,0 +1,33 @@
+{
+  "pageTitle": "Company Name",
+  "pageSubtitle": "Company Slogan",
+  "ok": "Ok",
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "services": "Services"
+  },
+  "footer": {
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "name": "Name",
+    "required": "(required)",
+    "modal": {
+      "title": "Message Sent",
+      "body": "Thank you for contacting us. We will get back to you as soon as possible."
+    }
+  }
+}
