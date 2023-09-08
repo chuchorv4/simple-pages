@@ -64,7 +64,7 @@ const Carousel = ({ domain }: MainProps) => {
         </button>
         <img
           src={images[currentIndex]}
-          alt={`Image ${currentIndex}`}
+          alt={`Image ${currentIndex + 1}`}
           className="h-full w-full object-cover"
         />
         <button
