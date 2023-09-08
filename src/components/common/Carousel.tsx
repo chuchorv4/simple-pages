@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { CarouselProps } from '@/interfaces/layout'
 
@@ -33,6 +33,18 @@ const Carousel = ({ domain }: CarouselProps) => {
     setCurrentIndex(index)
     updateCarouselButtons(index)
   }
+
+  useEffect(() => {
+    // Automatically advance to the next image every 5 seconds
+    const intervalId = setInterval(() => {
+      nextImage()
+    }, 5000)
+
+    // Clean up the interval when the component unmounts
+    return () => {
+      clearInterval(intervalId)
+    };
+  }, [currentIndex])
 
   return (
     <>
