@@ -110,7 +110,6 @@ const Carousel = ({ domain }: CarouselProps) => {
             ))}
           </div>
         </div>
-        <br></br>
       </div>
     </>
   )
