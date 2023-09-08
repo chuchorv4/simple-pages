@@ -1,3 +1,4 @@
+import Carousel from '@/components/common/Carousel'
 import { MainProps } from '@/interfaces/main'
 import { GetServerSideProps } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -8,6 +9,7 @@ const Main = ({ domain }: MainProps) => {
   return (
     <>
       <h1 className="text-3xl font-bold underline">{t('pageTitle')}</h1>
+      <Carousel domain={domain} />
     </>
   )
 }
