@@ -43,7 +43,7 @@ const Carousel = ({ domain }: CarouselProps) => {
     // Clean up the interval when the component unmounts
     return () => {
       clearInterval(intervalId)
-    };
+    }
   }, [currentIndex])
 
   return (
