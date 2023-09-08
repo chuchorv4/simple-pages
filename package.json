@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 80 -H 'test.ch' -H 'test2.ch' -H 'www.test.ch'",
+    "dev": "next dev -p 80",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
