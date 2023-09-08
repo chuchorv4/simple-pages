@@ -3,7 +3,7 @@ import Header from './header'
 import { useTranslation } from 'next-i18next'
 import { LayoutProps } from '@/interfaces/layout'
 import Footer from './footer'
-import Carousel from '@/components/common/Carrousel'
+import Carousel from '@/components/common/Carousel'
 
 const Layout = ({ children, domain }: LayoutProps) => {
   const { t } = useTranslation(domain)
@@ -22,7 +22,7 @@ const Layout = ({ children, domain }: LayoutProps) => {
           domain={domain}
         />
         <section className="mx-a flex-grow">{children}</section>
-        <Carousel domain={domain} children={undefined}/>
+        <Carousel domain={domain} />
         <Footer domain={domain} />
       </main>
       {isLoading && (

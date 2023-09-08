@@ -18,3 +18,7 @@ export interface NavbarProps {
 export interface FooterProps {
   domain: string
 }
+
+export interface CarouselProps {
+  domain: string
+}

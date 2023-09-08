@@ -1,9 +1,8 @@
-import { MainProps } from '@/interfaces/main'
-import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
+import Image from 'next/image'
+import { CarouselProps } from '@/interfaces/layout'
 
-const Carousel = ({ domain }: MainProps) => {
-  const { t } = useTranslation(domain)
+const Carousel = ({ domain }: CarouselProps) => {
   const images = [
     `/images/${domain}/logo200c.png`,
     `/images/${domain}/logo300.png`,
@@ -37,7 +36,7 @@ const Carousel = ({ domain }: MainProps) => {
 
   return (
     <div className="relative mx-auto max-w-screen-lg">
-      <div className="h-64 w-full relative">
+      <div className="relative h-64 w-full">
         <button
           onClick={prevImage}
           type="button"
@@ -62,10 +61,12 @@ const Carousel = ({ domain }: MainProps) => {
             <span className="sr-only">Previous</span>
           </span>
         </button>
-        <img
+        <Image
           src={images[currentIndex]}
           alt={`Image ${currentIndex + 1}`}
           className="h-full w-full object-cover"
+          width={800}
+          height={800}
         />
         <button
           onClick={nextImage}
@@ -91,7 +92,7 @@ const Carousel = ({ domain }: MainProps) => {
             <span className="sr-only">Next</span>
           </span>
         </button>
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex justify-center space-x-2">
+        <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 justify-center space-x-2">
           {images.map((image, index) => (
             <button
               key={index}
