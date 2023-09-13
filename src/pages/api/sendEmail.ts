@@ -3,8 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
   // const host = (req.headers.host || '').replace(/([w]{3}[.]{1})*/g, '')
-  axios.defaults.headers.post['Content-Type'] = 'application/json'
-
   const response = await axios.post(
     'https://formsubmit.co/ajax/jesr.v.4@gmail.com',
     {
@@ -16,7 +14,14 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
         'Thank you for contacting me. I will get back to you as soon as possible.',
       _template: 'table',
     },
-    {}
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        referrer: 'Origin',
+      },
+    }
   )
 
   console.log(response.data)

@@ -7,9 +7,10 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import schema from '../../schemas/contact'
 import Modal from '@/components/common/Modal'
-import { useMutation } from '@tanstack/react-query'
-import sendEmail from '@/services/front/sendEmail'
+// import { useMutation } from '@tanstack/react-query'
+// import sendEmail from '@/services/front/sendEmail'
 import { ContactForm } from '@/interfaces/contact'
+import axiosInstance from '@/utils/axiosInstance'
 
 const initialValues = {
   name: '',
@@ -32,15 +33,41 @@ const Contact = ({ domain }: MainProps) => {
 
   const [showModal, setShowModal] = useState(false)
 
-  const { mutate } = useMutation(sendEmail, {
-    onSuccess: () => {
-      setShowModal(true)
-    },
-  })
+  // const { mutate } = useMutation(sendEmail, {
+  //   onSuccess: () => {
+  //     setShowModal(true)
+  //   },
+  // })
 
-  const onSubmit = (data: ContactForm) => {
-    mutate(data)
+  const onSubmit = async (data: ContactForm) => {
+    // mutate(data)
+    axiosInstance
+      .post(
+        'https://formsubmit.co/ajax/nc_1088@hotmail.com',
+        {
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          _subject: 'New message from your website',
+          _autoresponse:
+            'Thank you for contacting me. I will get back to you as soon as possible.',
+          _template: 'table',
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        }
+      )
+      .then(() => {
+        setShowModal(true)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
+
   return (
     <>
       {showModal && (
