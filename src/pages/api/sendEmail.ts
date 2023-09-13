@@ -1,32 +1,25 @@
+import axios from 'axios'
 import { NextApiRequest, NextApiResponse } from 'next'
-import nodemailer from 'nodemailer'
-
-const smtpOptions = {
-  host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
-  secure: false,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASSWORD,
-  },
-}
 
 const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
   // const host = (req.headers.host || '').replace(/([w]{3}[.]{1})*/g, '')
+  axios.defaults.headers.post['Content-Type'] = 'application/json'
 
-  const transporter = nodemailer.createTransport({
-    ...smtpOptions,
-  })
+  const response = await axios.post(
+    'https://formsubmit.co/ajax/jesr.v.4@gmail.com',
+    {
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message,
+      _subject: 'New message from your website',
+      _autoresponse:
+        'Thank you for contacting me. I will get back to you as soon as possible.',
+      _template: 'table',
+    },
+    {}
+  )
 
-  const response = await transporter.sendMail({
-    from: process.env.SMTP_USER,
-    to: process.env.SMTP_USER,
-    subject: `New message from ${req.body.name} <${req.body.email}>`,
-    text: `New message from ${req.body.name} <${req.body.email}> 
-    ${req.body.message}`,
-  })
-
-  console.log(response)
+  console.log(response.data)
 
   return res.status(200).json({ status: true })
 }
